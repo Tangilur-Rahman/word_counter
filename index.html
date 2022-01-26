@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a361935258.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Word Counter</title>
+
+    <!-- add css -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+      @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        font-family: "Mochiy Pop P One", sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 30px;
+        color: rgb(223, 50, 19);
+      }
+      #container {
+        width: 100vw;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      #textarea {
+        width: 80vw;
+        min-height: 200px;
+        margin: 0 auto;
+        resize: vertical;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 20px;
+        overflow: auto;
+        border: 1px groove rgb(223, 50, 19);
+        border-radius: 30px;
+        box-shadow: -1px 2px 27px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -1px 2px 27px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 27px 0px rgba(0, 0, 0, 0.75);
+      }
+
+      #counter {
+        display: flex;
+        width: 80vw;
+        margin: 0 auto;
+        color: rgb(223, 50, 19);
+      }
+      .count {
+        padding: 20px 30px 0px 0px;
+      }
+      ::selection {
+        background-color: rgb(150, 185, 252);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Word & Character Counter</h1>
+
+      <textarea
+        name="textarea"
+        id="textarea"
+        placeholder="Start...."
+      ></textarea>
+
+      <div id="counter">
+        <h3 class="count" id="word">0 Words</h3>
+        <h3 class="count" id="character">0 Character</h3>
+      </div>
+    </div>
+
+    <!-- add script -->
+    <script>
+      let textarea = document.getElementById("textarea");
+
+      textarea.addEventListener("input", function () {
+        let getText = this.value;
+        let characterLen = getText.length;
+
+        document.getElementById(
+          "character"
+        ).innerText = `${characterLen}  character`;
+
+        let word2 = getText.trim();
+        let array = word2.split(" ");
+
+        let clearList = array.filter(function (el) {
+          return el != "";
+        });
+
+        document.getElementById(
+          "word"
+        ).innerText = ` ${clearList.length}  Words  `;
+      });
+    </script>
+  </body>
+</html>
